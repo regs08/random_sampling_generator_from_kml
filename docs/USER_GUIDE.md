@@ -114,16 +114,28 @@ python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --for
 The default CSV output contains:
 - `longitude`: X coordinate in decimal degrees
 - `latitude`: Y coordinate in decimal degrees
-- `sample_name`: Unique identifier (e.g., SAMPLE_1, SAMPLE_2)
-- `polygon_index`: Index of the source polygon
+- `sample_name`: Intelligent identifier reflecting command arguments
+- `point_id`: Sequential point identifier
 - Additional metadata columns (if specified)
+
+### Intelligent Sample Naming
+
+Sample names automatically reflect the command arguments used, making them descriptive and traceable:
+
+**Naming Pattern**: `{PREFIX}_{FILTER}_{POINTS}_{DISTANCE}_{SEQUENTIAL_NUMBER}`
+
+**Examples**:
+- `SAMPLE_P5_0001` - Basic sampling with 5 points
+- `SAMPLE_TRIANGLE_P3_0001` - Triangle filter with 3 points
+- `TEST_RECTANGLE_P4_D10M_0001` - Rectangle filter, 4 points, 10m distance, TEST prefix
+- `SAMPLE_TRIANGLE_P2_0001` - Name filter (Triangle Farm) with 2 points
 
 ### Example CSV Output
 ```csv
-longitude,latitude,sample_name,polygon_index,project,researcher
--77.046123,42.870456,SAMPLE_1,0,Study2024,John
--77.045789,42.870789,SAMPLE_2,0,Study2024,John
--77.046456,42.871123,SAMPLE_3,1,Study2024,John
+longitude,latitude,sample_name,point_id,metadata_project,metadata_researcher
+-77.046123,42.870456,SAMPLE_TRIANGLE_P3_0001,1,Study2024,John
+-77.045789,42.870789,SAMPLE_TRIANGLE_P3_0002,2,Study2024,John
+-77.046456,42.871123,SAMPLE_TRIANGLE_P3_0003,3,Study2024,John
 ```
 
 ## Troubleshooting

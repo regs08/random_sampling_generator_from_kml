@@ -105,9 +105,27 @@ The system generates clean, GIS-compatible CSV files with:
 |--------|-------------|---------|
 | `longitude` | X coordinate in decimal degrees | `-77.046123` |
 | `latitude` | Y coordinate in decimal degrees | `42.870456` |
-| `sample_name` | Unique sample identifier | `SAMPLE_1` |
-| `polygon_index` | Source polygon index | `0` |
+| `sample_name` | Intelligent identifier reflecting command arguments | `SAMPLE_TRIANGLE_P3_0001` |
+| `point_id` | Sequential point identifier | `1` |
 | `metadata_*` | Custom metadata columns | `Study2024` |
+
+### Intelligent Sample Naming
+
+Sample names automatically reflect the command arguments used, making them descriptive and traceable:
+
+**Naming Pattern**: `{PREFIX}_{FILTER}_{POINTS}_{DISTANCE}_{SEQUENTIAL_NUMBER}`
+
+**Examples**:
+- `SAMPLE_P5_0001` - Basic sampling with 5 points
+- `SAMPLE_TRIANGLE_P3_0001` - Triangle filter with 3 points  
+- `TEST_RECTANGLE_P4_D10M_0001` - Rectangle filter, 4 points, 10m distance, TEST prefix
+- `SAMPLE_TRIANGLE_P2_0001` - Name filter (Triangle Farm) with 2 points
+
+**Benefits**:
+- **Descriptive**: Names immediately tell you what parameters were used
+- **Sortable**: Names sort logically by filter, then by sequence
+- **Traceable**: Easy to identify which samples came from which command
+- **Flexible**: Adapts to different filter types and custom settings
 
 ### Metadata Support
 Add custom metadata to track sampling context:

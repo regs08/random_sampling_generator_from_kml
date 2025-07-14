@@ -65,9 +65,41 @@ The `data/Test Polygons.kml` file contains:
 
 The tool generates CSV files with:
 - `longitude,latitude`: Coordinates in decimal degrees
-- `sample_name`: Unique identifier (e.g., SAMPLE_1, SAMPLE_2)
-- `polygon_index`: Source polygon reference
+- `sample_name`: Intelligent identifier reflecting command arguments
+- `point_id`: Sequential point identifier
 - Additional metadata columns (if specified)
+
+### Intelligent Sample Naming
+
+Sample names automatically reflect the command arguments used:
+
+**Basic sampling (5 points)**:
+```csv
+sample_name,longitude,latitude,point_id
+SAMPLE_P5_0001,-77.034215,42.836205,1
+SAMPLE_P5_0002,-77.032971,42.836686,2
+```
+
+**Triangle filter (3 points)**:
+```csv
+sample_name,longitude,latitude,point_id
+SAMPLE_TRIANGLE_P3_0001,-77.031614,42.834642,1
+SAMPLE_TRIANGLE_P3_0002,-77.032509,42.834086,2
+```
+
+**Rectangle filter with custom settings (4 points, 10m distance, TEST prefix)**:
+```csv
+sample_name,longitude,latitude,point_id
+TEST_RECTANGLE_P4_D10M_0001,-77.024034,42.836818,1
+TEST_RECTANGLE_P4_D10M_0002,-77.022575,42.836581,2
+```
+
+**Naming Pattern**: `{PREFIX}_{FILTER}_{POINTS}_{DISTANCE}_{SEQUENTIAL_NUMBER}`
+- **PREFIX**: Base prefix (SAMPLE) or custom prefix
+- **FILTER**: Filter group (TRIANGLE, RECTANGLE) or first word of name
+- **POINTS**: Point count if not default (P3, P5)
+- **DISTANCE**: Distance if not default (D10M for 10 meters)
+- **SEQUENTIAL**: Sequential numbering (0001, 0002, etc.)
 
 ## Next Steps
 

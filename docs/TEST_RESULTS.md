@@ -111,17 +111,17 @@ python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 3 --app
 
 ### CSV Format Verification
 ```csv
-longitude,latitude,sample_name,polygon_index
--77.046123,42.870456,SAMPLE_1,0
--77.045789,42.870789,SAMPLE_2,0
--77.046456,42.871123,SAMPLE_3,1
+longitude,latitude,sample_name,point_id
+-77.046123,42.870456,SAMPLE_TRIANGLE_P3_0001,1
+-77.045789,42.870789,SAMPLE_TRIANGLE_P3_0002,2
+-77.046456,42.871123,SAMPLE_TRIANGLE_P3_0003,3
 ```
 
 **Validation Results:**
 - ✅ **Coordinate Format**: Proper decimal degrees
 - ✅ **Coordinate Range**: Valid longitude (-180 to 180) and latitude (-90 to 90)
-- ✅ **Sample Names**: Sequential, unique identifiers
-- ✅ **Polygon Index**: Correct source polygon tracking
+- ✅ **Sample Names**: Intelligent identifiers reflecting command arguments
+- ✅ **Point ID**: Sequential point tracking
 - ✅ **CSV Structure**: Standard format with headers
 
 ### GIS Compatibility
