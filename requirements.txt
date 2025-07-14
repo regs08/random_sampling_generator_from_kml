@@ -1,0 +1,6 @@
+shapely
+pyproj
+pandas
+numpy
+pytest
+lxml
