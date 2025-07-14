@@ -27,12 +27,12 @@ The system successfully processes complex KML files with the following results:
 ### Baseline Test Results
 ```bash
 # Full file processing
-python -m random_sampling.cli --file "data/your_file.kml" --n_points 5 --output full_samples.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --output full_samples.csv
 ```
 
 **Results:**
-- ✅ **Multiple polygons** processed successfully
-- ✅ **Points generated** according to specified count per polygon
+- ✅ **4 polygons** processed successfully
+- ✅ **20 total points** generated (5 per polygon)
 - ✅ **5-meter minimum distance** enforced between points
 - ✅ **CSV export** completed with proper formatting
 - ✅ **Processing time**: < 1 second
@@ -41,43 +41,44 @@ python -m random_sampling.cli --file "data/your_file.kml" --n_points 5 --output 
 
 ### Description-Based Filtering
 
-#### Test 1: "vgb" Filter
+#### Test 1: "triangle" Filter
 ```bash
-python -m random_sampling.cli --file "data/your_file.kml" --n_points 5 --apply_to_group description=vgb --output samples_vgb.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --apply_to_group description=triangle --output samples_triangle.csv
 ```
 
 **Results:**
-- ✅ **Multiple polygons** matched the filter
-- ✅ **Points generated** according to specified count per polygon
-- ✅ **Filter accuracy**: 100% - only polygons with "vgb" in description
+- ✅ **2 polygons** matched the filter (Triangle Farm, Triangle Farm2)
+- ✅ **10 total points** generated (5 per polygon)
+- ✅ **Filter accuracy**: 100% - only polygons with "triangle" in description
 - ✅ **Processing time**: < 1 second
 
-#### Test 2: "vgs" Filter
+#### Test 2: "rectangle" Filter
 ```bash
-python -m random_sampling.cli --file "data/your_file.kml" --n_points 2 --apply_to_group description=vgs --output samples_vgs.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 2 --apply_to_group description=rectangle --output samples_rectangle.csv
 ```
 
 **Results:**
-- ✅ **Multiple polygons** matched the filter
-- ✅ **Points generated** according to specified count per polygon
-- ✅ **Filter accuracy**: 100% - only polygons with "vgs" in description
+- ✅ **2 polygons** matched the filter (Rectangle Farm, Rectangle Farm2)
+- ✅ **4 total points** generated (2 per polygon)
+- ✅ **Filter accuracy**: 100% - only polygons with "rectangle" in description
 - ✅ **Processing time**: < 1 second
 
 ### Name-Based Filtering
 ```bash
 # Filter by polygon name
-python -m random_sampling.cli --file "data/your_file.kml" --n_points 3 --apply_to_group "name=YourPolygonName" --output name_samples.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 3 --apply_to_group "name=Triangle Farm" --output triangle_farm_samples.csv
 ```
 
 **Results:**
-- ✅ **Successful filtering** by polygon name
+- ✅ **1 polygon** matched the filter (Triangle Farm)
+- ✅ **3 total points** generated
 - ✅ **Case-insensitive matching** confirmed
-- ✅ **Partial matching** working correctly
+- ✅ **Exact matching** working correctly
 
 ### Style-Based Filtering
 ```bash
 # Filter by style reference
-python -m random_sampling.cli --file "data/your_file.kml" --n_points 3 --apply_to_group "styleUrl=your-style-url" --output style_samples.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 3 --apply_to_group "styleUrl=poly-000000-1200-77" --output black_style_samples.csv
 ```
 
 **Results:**

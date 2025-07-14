@@ -46,18 +46,18 @@ The `--apply_to_group` parameter allows filtering polygons by KML attributes.
 ### Filtering Examples
 
 ```bash
-# Filter by grape variety name
---apply_to_group "name=Chardonnay"
+# Filter by polygon name
+--apply_to_group "name=Triangle Farm"
 
 # Filter by style (same color/style polygons)
---apply_to_group "styleUrl=poly-3949AB-2000-76"
+--apply_to_group "styleUrl=poly-000000-1200-77"
 
 # Filter by description content
---apply_to_group "description=vgb"
---apply_to_group "description=vgs"
+--apply_to_group "description=triangle"
+--apply_to_group "description=rectangle"
 
 # Filter by extended data
---apply_to_group "data_Name=Arandell"
+--apply_to_group "data_Name=FieldType"
 ```
 
 ### Filtering Behavior
@@ -73,39 +73,39 @@ The `--apply_to_group` parameter allows filtering polygons by KML attributes.
 
 ```bash
 # Generate 5 points per polygon with default 5-meter spacing
-python -m random_sampling.cli --file data/field.kml --n_points 5 --output samples.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --output samples.csv
 
 # Generate 10 points per polygon with 10-meter spacing
-python -m random_sampling.cli --file data/field.kml --n_points 10 --min_distance_meters 10 --output samples.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 10 --min_distance_meters 10 --output samples.csv
 ```
 
 ### Filtered Sampling
 
 ```bash
-# Sample only Chardonnay polygons
-python -m random_sampling.cli --file data/vineyard.kml --n_points 3 --apply_to_group "name=Chardonnay" --output chardonnay.csv
+# Sample only Triangle Farm polygons
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 3 --apply_to_group "name=Triangle Farm" --output triangle_farm.csv
 
 # Sample polygons with specific style
-python -m random_sampling.cli --file data/vineyard.kml --n_points 5 --apply_to_group "styleUrl=poly-3949AB-2000-76" --output red_style.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --apply_to_group "styleUrl=poly-000000-1200-77" --output black_style.csv
 
-# Sample polygons with "vgb" in description
-python -m random_sampling.cli --file data/vineyard.kml --n_points 2 --apply_to_group "description=vgb" --output vgb_samples.csv
+# Sample polygons with "triangle" in description
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 2 --apply_to_group "description=triangle" --output triangle_samples.csv
 ```
 
 ### Advanced Options
 
 ```bash
 # Use custom sample prefix and add metadata
-python -m random_sampling.cli --file data/field.kml --n_points 5 --sample_prefix "FIELD" --metadata "project=Study2024" --metadata "researcher=John" --output field_samples.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --sample_prefix "TEST" --metadata "project=Study2024" --metadata "researcher=John" --output test_samples.csv
 
 # Set random seed for reproducible results
-python -m random_sampling.cli --file data/field.kml --n_points 5 --seed 12345 --output reproducible_samples.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --seed 12345 --output reproducible_samples.csv
 
 # Enable verbose logging
-python -m random_sampling.cli --file data/field.kml --n_points 5 --verbose --output samples.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --verbose --output samples.csv
 
 # Generate GeoJSON instead of CSV
-python -m random_sampling.cli --file data/field.kml --n_points 5 --format geojson --output samples.geojson
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --format geojson --output samples.geojson
 ```
 
 ## Output Format

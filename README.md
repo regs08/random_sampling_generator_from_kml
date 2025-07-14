@@ -27,8 +27,10 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # Generate sampling points
-python -m random_sampling.cli --file data/Robbins\ Farm.kml --n_points 5 --output data/samples.csv
+python -m random_sampling.cli --file "data/Test Polygons.kml" --n_points 5 --output data/samples.csv
 ```
+
+**Note**: The test polygons in `data/Test Polygons.kml` have no real-world meaning and are solely used for testing the application functionality.
 
 ## 📚 Documentation
 

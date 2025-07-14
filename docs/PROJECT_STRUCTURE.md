@@ -8,7 +8,7 @@ Complete guide to the Random Sampling Point Generator's file organization and de
 random_sampling_generator/
 │
 ├── 📁 data/                    # Input KML files and sample data
-│   └── your_file.kml          # Example KML file
+│   └── Test Polygons.kml      # Test KML file with triangle and rectangle groups
 │
 ├── 📁 random_sampling/         # Core application package
 │   ├── __init__.py            # Package initialization
@@ -324,7 +324,7 @@ random_sampling_generator/
 - **Constants**: UPPERCASE with underscores (`DEFAULT_DISTANCE`)
 
 ### Data Files
-- **KML Files**: descriptive names with spaces (`your_file.kml`)
+- **KML Files**: descriptive names with spaces (`Test Polygons.kml`)
 - **CSV Files**: descriptive names with underscores (`chardonnay_samples.csv`)
 - **Configuration**: lowercase with extensions (`config.yaml`)
 
