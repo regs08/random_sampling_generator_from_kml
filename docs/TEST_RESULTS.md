@@ -16,23 +16,23 @@ The system successfully processes complex KML files with the following results:
 - ✅ **Boundary Validation**: Proper point containment checking
 - ✅ **KML Attribute Filtering**: Successfully filters by polygon attributes
 
-## Test Data: Robbins Farm.kml
+## Test Data: Sample KML Files
 
 ### File Characteristics
-- **Total Placemarks**: 16 polygons
-- **File Size**: 19KB
+- **Total Placemarks**: Multiple polygons
+- **File Size**: Various sizes
 - **Complexity**: Mixed polygon types with various attributes
 - **Coordinate System**: WGS84 (EPSG:4326)
 
 ### Baseline Test Results
 ```bash
 # Full file processing
-python -m random_sampling.cli --file "data/Robbins Farm.kml" --n_points 5 --output full_samples.csv
+python -m random_sampling.cli --file "data/your_file.kml" --n_points 5 --output full_samples.csv
 ```
 
 **Results:**
-- ✅ **16 polygons** processed successfully
-- ✅ **80 total points** generated (5 per polygon)
+- ✅ **Multiple polygons** processed successfully
+- ✅ **Points generated** according to specified count per polygon
 - ✅ **5-meter minimum distance** enforced between points
 - ✅ **CSV export** completed with proper formatting
 - ✅ **Processing time**: < 1 second
@@ -43,30 +43,30 @@ python -m random_sampling.cli --file "data/Robbins Farm.kml" --n_points 5 --outp
 
 #### Test 1: "vgb" Filter
 ```bash
-python -m random_sampling.cli --file "data/Robbins Farm.kml" --n_points 5 --apply_to_group description=vgb --output samples_vgb.csv
+python -m random_sampling.cli --file "data/your_file.kml" --n_points 5 --apply_to_group description=vgb --output samples_vgb.csv
 ```
 
 **Results:**
-- ✅ **3 polygons** matched the filter
-- ✅ **15 total points** generated (5 per polygon)
+- ✅ **Multiple polygons** matched the filter
+- ✅ **Points generated** according to specified count per polygon
 - ✅ **Filter accuracy**: 100% - only polygons with "vgb" in description
 - ✅ **Processing time**: < 1 second
 
 #### Test 2: "vgs" Filter
 ```bash
-python -m random_sampling.cli --file "data/Robbins Farm.kml" --n_points 2 --apply_to_group description=vgs --output samples_vgs.csv
+python -m random_sampling.cli --file "data/your_file.kml" --n_points 2 --apply_to_group description=vgs --output samples_vgs.csv
 ```
 
 **Results:**
-- ✅ **13 polygons** matched the filter
-- ✅ **26 total points** generated (2 per polygon)
+- ✅ **Multiple polygons** matched the filter
+- ✅ **Points generated** according to specified count per polygon
 - ✅ **Filter accuracy**: 100% - only polygons with "vgs" in description
 - ✅ **Processing time**: < 1 second
 
 ### Name-Based Filtering
 ```bash
-# Filter by grape variety name
-python -m random_sampling.cli --file "data/Robbins Farm.kml" --n_points 3 --apply_to_group "name=Chardonnay" --output chardonnay_samples.csv
+# Filter by polygon name
+python -m random_sampling.cli --file "data/your_file.kml" --n_points 3 --apply_to_group "name=YourPolygonName" --output name_samples.csv
 ```
 
 **Results:**
@@ -77,7 +77,7 @@ python -m random_sampling.cli --file "data/Robbins Farm.kml" --n_points 3 --appl
 ### Style-Based Filtering
 ```bash
 # Filter by style reference
-python -m random_sampling.cli --file "data/Robbins Farm.kml" --n_points 3 --apply_to_group "styleUrl=poly-3949AB-2000-76" --output style_samples.csv
+python -m random_sampling.cli --file "data/your_file.kml" --n_points 3 --apply_to_group "styleUrl=your-style-url" --output style_samples.csv
 ```
 
 **Results:**
