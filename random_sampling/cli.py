@@ -273,7 +273,10 @@ def main():
         # Export main file
         export_kwargs = {
             "metadata": metadata,
-            "sample_prefix": args.sample_prefix
+            "sample_prefix": args.sample_prefix,
+            "apply_to_group": args.apply_to_group,
+            "n_points": args.n_points,
+            "min_distance_meters": args.min_distance_meters
         }
         
         success = export_sampling_points(
